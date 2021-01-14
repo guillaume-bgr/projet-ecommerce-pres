@@ -257,18 +257,30 @@ function showAllItems() {
             </p>
             <div class="manage-cart">
                 <div class="plus-minus">
-                    <a rel="nofollow" class="button del-article" href="#">-</a>
-                    <p class="amount">1</p>
-                    <a rel="nofollow" class="button add-article" href="#">+</a>
+                    <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                    <p class="amount"></p>
+                    <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                 </div>
                 <div class="add-to-cart">
-                    <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                    <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                 </div>
             </div>
         </div>`
         });
     }   
+};
+
+function countCartItems() {
+    productName = $(this).parent().parent().prev().prev().prev().text();
+    let productNumber = localStorage.getItem(productName);
+    productNumber = parseInt(productNumber);
+    if (productNumber) {
+        localStorage.setItem( productName , productNumber + 1);
+    }
+    else {
+        localStorage.setItem( productName , 1);
+    } 
 }
 
 // Events listeners des filtres pour afficher seulement certaines catégories d'articles
@@ -285,12 +297,12 @@ $('.ecig').click(function() {
                     </p>
                     <div class="manage-cart">
                         <div class="plus-minus">
-                            <a rel="nofollow" class="button del-article" href="#">-</a>
-                            <p class="amount">1</p>
-                            <a rel="nofollow" class="button add-article" href="#">+</a>
+                            <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                            <p class="amount"></p>
+                            <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                         </div>
                         <div class="add-to-cart">
-                            <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                            <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                         </div>
                     </div>
@@ -316,12 +328,12 @@ $('.bat').click(function() {
                     </p>
                     <div class="manage-cart">
                         <div class="plus-minus">
-                            <a rel="nofollow" class="button del-article" href="#">-</a>
-                            <p class="amount">1</p>
-                            <a rel="nofollow" class="button add-article" href="#">+</a>
+                            <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                            <p class="amount"></p>
+                            <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                         </div>
                         <div class="add-to-cart">
-                            <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                            <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                         </div>
                     </div>
@@ -347,12 +359,12 @@ $('.clearo').click(function() {
                     </p>
                     <div class="manage-cart">
                         <div class="plus-minus">
-                            <a rel="nofollow" class="button del-article" href="#">-</a>
-                            <p class="amount">1</p>
-                            <a rel="nofollow" class="button add-article" href="#">+</a>
+                            <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                            <p class="amount"></p>
+                            <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                         </div>
                         <div class="add-to-cart">
-                            <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                            <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                         </div>
                     </div>
@@ -378,12 +390,12 @@ $('.res').click(function() {
                     </p>
                     <div class="manage-cart">
                         <div class="plus-minus">
-                            <a rel="nofollow" class="button del-article" href="#">-</a>
-                            <p class="amount">1</p>
-                            <a rel="nofollow" class="button add-article" href="#">+</a>
+                            <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                            <p class="amount"></p>
+                            <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                         </div>
                         <div class="add-to-cart">
-                            <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                            <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                         </div>
                     </div>
@@ -409,12 +421,12 @@ $('.liquid').click(function() {
                     </p>
                     <div class="manage-cart">
                         <div class="plus-minus">
-                            <a rel="nofollow" class="button del-article" href="#">-</a>
-                            <p class="amount">1</p>
-                            <a rel="nofollow" class="button add-article" href="#">+</a>
+                            <a rel="nofollow" class="button del-article" onclick="return false;" href="#">-</a>
+                            <p class="amount"></p>
+                            <a rel="nofollow" class="button add-article" onclick="return false;" href="#">+</a>
                         </div>
                         <div class="add-to-cart">
-                            <a rel="nofollow" class="cart-add" href="#">Ajouter au panier<img
+                            <a rel="nofollow" class="cart-add" onclick="return false;" href="#">Ajouter au panier<img
                             src="assets/img/add-to-basket.svg" alt=""></a>
                         </div>
                     </div>
@@ -424,13 +436,36 @@ $('.liquid').click(function() {
         }
         $(".off-filters").remove();
         $(".fil:last-child").after(function() {
-            return `<li class="off-filters liquid"><img class="rem" src="assets/img/cancel.svg" alt="supprimer le filtre">Goût/E-liquide
+            return `<li class="off-filters"><img class="remove" src="assets/img/cancel.svg" alt="supprimer le filtre">Goût/E-liquide
             </li>`
         });
 });
 
-$('.rem').click(function(){
+//Enlever les filtres et remettre tout les articles
+$('.type-filter').on('click', '.off-filters', function() {
     $('.off-filters').remove();
-})
+    $('.item').remove();
+    showAllItems();
+});
+
+// Ajouter les produits ajoutés au panier au stockage local
+$('.items').on('click', '.cart-add', function() {
+    productName = $(this).parent().parent().prev().prev().prev().text();
+    let productNumber = localStorage.getItem(productName);
+    productNumber = parseInt(productNumber);
+    if (productNumber) {
+        localStorage.setItem(productName , productNumber + 1);
+    }
+    else {
+        localStorage.setItem(productName , 2);
+    } 
+    $(this).parent().prev().find('.amount').text(productNumber);
+    // if($(this).parent().prev().find('.amount').text() === 1) {
+    //     $(this).parent().prev().find('.amount').text(+1);            // A TERMINER
+    // }
+});
+
+showAllItems();
+
 
 })
