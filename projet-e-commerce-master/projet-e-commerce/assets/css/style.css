@@ -145,16 +145,6 @@ main .purchase .filters ul li img {
     margin-right: 1vw;
 }
 
-.purchase .filters ul li.off-filters {
-    display: flex;
-    align-items: center;
-    font-size: 8px;
-    background-color: rgb(197, 197, 197);
-    border: 1px solid rgb(144, 144, 144);
-    padding-left: 3px;
-    margin-top: 5px;
-}
-
 /* Items style */
 
 main .purchase .items {
